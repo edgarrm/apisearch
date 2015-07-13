@@ -20,12 +20,25 @@
 				//$.getJSON(URL, function(data){
 				//	console.log(data);
 				//});
-				$.ajax({
+				/*$.ajax({
 					url: URL,
+					headers:{
+						"origin" : "http://localhost/ApiSearch/"
+					},
 					success:function(data){
 						console.log(data);
 					}
-				});
+				});*/
+				//xdr = new window.XDomainRequest(); 
+				var xdr = new XMLHttpRequest();
+				//xdr.setRequestHeader("Origin","http://localhost/ApiSearch/");
+				xdr.onload=function()
+				{
+				    alert(xdr.responseText);
+				}
+				xdr.open("GET", URL);
+				xdr.setRequestHeader("Origin","http://apisearch.herokuapp.com/");
+				xdr.send(); 
 			});
 		});
 	</script>
